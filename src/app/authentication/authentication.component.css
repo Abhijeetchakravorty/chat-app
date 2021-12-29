@@ -1,0 +1,85 @@
+.login-page-container{
+        background-image: url("../../assets/images/login.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+}
+
+.login-page-cover-sheet{
+        width: 100%;
+        position: absolute;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        top:0;
+        left:0;
+}
+
+.mat-card-container{
+        width: 30%;
+        z-index: 9999;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:10%;
+}
+
+.chatapp-mat-card{
+        background-color: rgba(255, 255, 255, 0.9);
+}
+
+.chatapp-mat-card-container{
+        text-align: center;
+}
+
+.login-page-phone-icon {
+        width: 90px;
+        height: 90px;
+        border-radius: 15px;
+}
+
+.margin-top-6{
+        margin-top: 6%;
+}
+
+.margin-bottom-nil{
+        margin-bottom: 0px;
+}
+
+.width-height-100{
+        width: 100%;
+        height: 100%;
+}
+
+
+@media only screen and (max-width: 900px) {
+        .mat-card-container {
+                width: 60%;
+                margin-top: 20%;
+        }
+}
+
+
+@media only screen and (max-width: 600px) {
+        .mat-card-container {
+                width: 90%;
+                margin-top: 20%;
+        }
+
+        .padding-2{
+                padding-bottom: 5%;
+        }
+
+        .login-page-container{
+                background-repeat: repeat-y;
+        }
+}
+
+.password-err{
+        min-height: 20px;
+}
+
+.highlight{
+        color: inherit;
+        font-weight: bold;
+}

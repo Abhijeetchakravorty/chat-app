@@ -1,0 +1,8 @@
+.chatapp-chat-list{
+        height: 100%;
+}
+
+.chatapp-list-container{
+        max-height: 500px;
+        overflow: scroll;
+}

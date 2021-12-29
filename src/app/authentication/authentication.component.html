@@ -1,0 +1,125 @@
+<ng-container *ngIf="loginObj.showLogin">
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column">
+    <div fxFlex.xl="100%" fxFlex.lg="100%" fxFlex.md="100%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayout="column"
+      fxLayoutAlign="space-between">
+      <div class="login-page-container padding-2">
+        <div class="login-page-cover-sheet">
+          <div class="mat-card-container">
+            <mat-card class="chatapp-mat-card">
+              <mat-card-content>
+                <div class="chatapp-mat-card-container">
+                  <h3 class="margin-bottom-nil">
+                    <b>
+                      Tokyo
+                    </b>
+                  </h3>
+                  <img class="login-page-phone-icon" src="../../assets/images/phone.png"/>
+                  <h3>
+                    <b>
+                      Login
+                    </b>
+                  </h3>
+                  <form (ngSubmit)="login()">
+                    <mat-form-field class="width-100">
+                      <mat-label>email</mat-label>
+                      <input matInput type="email" [(ngModel)]="loginObj.email" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('email', 'login')"/>
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="loginObj.showLoginEmailSuffix" (click)="removeText('email')">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <div class="text-align-left" *ngIf="loginObj.showLoginEmailErr">
+                      <span>Incorrect email</span>
+                    </div>
+                    <mat-form-field class="width-100 margin-top-2">
+                      <mat-label>password</mat-label>
+                      <input matInput type="password" [(ngModel)]="loginObj.password" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('password', 'login')"/>
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="loginObj.showLoginPassSuffix" (click)="removeText('password')">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <div class="password-err margin-bottom-2">
+                      <p class="text-align-left" *ngIf="loginObj.showLoginPassErr">
+                        {{loginObj.err}}
+                      </p>
+                    </div>
+                    <button type="submit" class="width-100 margin-top-2" mat-raised-button color="warn">LogIn</button>
+                  </form>
+                  <div class="margin-top-6">
+                    <p>Don't have an account? <span class="cursor-pointer"><a class="highlight" (click)="switchView()">SignUp!</a></span></p>
+                    <p>Forgot Password?</p>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="!loginObj.showLogin">
+  <div fxLayout.xl="row" fxLayout.lg="row" fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column">
+    <div fxFlex.xl="100%" fxFlex.lg="100%" fxFlex.md="100%" fxFlex.sm="100%" fxFlex.xs="100%" fxLayout="column"
+      fxLayoutAlign="space-between">
+      <div class="login-page-container padding-2">
+        <div class="login-page-cover-sheet">
+          <div class="mat-card-container">
+            <mat-card class="chatapp-mat-card">
+              <mat-card-content>
+                <div class="chatapp-mat-card-container">
+                  <h3 class="margin-bottom-nil">
+                    <b>
+                      Tokyo
+                    </b>
+                  </h3>
+                  <img class="login-page-phone-icon" src="../../assets/images/phone.png"/>
+                  <h3>
+                    <b>
+                      Signup
+                    </b>
+                  </h3>
+                  <form (ngSubmit)="signup()">
+                    <mat-form-field class="width-100">
+                      <mat-label>First Name</mat-label>
+                      <input matInput type="text" [(ngModel)]="signUpObj.firstName" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('firstName', 'signup')">
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="signUpObj.showSignupFNameSuffix">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <mat-label>Last Name</mat-label>
+                      <input matInput type="text" [(ngModel)]="signUpObj.lastName" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('lastName', 'signup')">
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="signUpObj.showSignupLNameSuffix">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <mat-label>email</mat-label>
+                      <input matInput type="email" [(ngModel)]="signUpObj.email" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('email', 'signup')">
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="signUpObj.showSignupEmailSuffix">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <mat-form-field class="width-100">
+                      <mat-label>password</mat-label>
+                      <input matInput type="password" [(ngModel)]="signUpObj.password" [ngModelOptions]="{standalone: true}" (ngModelChange)="udpateSuffix('password', 'signup')">
+                      <button type="button" matSuffix mat-icon-button aria-label="Clear" *ngIf="signUpObj.showSignupPassSuffix">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </mat-form-field>
+                    <button type="submit" class="width-100" mat-raised-button color="warn">SignUp</button>
+                  </form>
+                  <div class="margin-top-6">
+                    <p>Already have an account? <span class="cursor-pointer highlight"><a (click)="switchView()">SignIn!</a></span></p>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

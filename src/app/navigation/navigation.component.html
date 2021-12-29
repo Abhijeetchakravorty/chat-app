@@ -1,0 +1,45 @@
+<mat-toolbar class="chat-toolbar" fxLayout.gt-sm="row" fxLayout.sm="row" fxLayout.xs="row">
+  <div fxFlex.gt-sm="80%" fxFlex.lt-sm="80%" fxFlex.sm="80%">
+    <button (click)="drawer.toggle()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Tokyo</span>
+  </div>
+  <div fxFlex.gt-sm="20%" fxFlex.lt-sm="20%" fxFlex.sm="20%">
+    <div class="width-100 text-align-right">
+      <button (click)="logout()" mat-button class="example-icon" aria-label="Example icon-button with share icon">
+        Logout
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container autosize class="height-100 chatapp-mat-drawer-container">
+  <mat-drawer #drawer mode="over" class="chatapp-mat-drawer">
+    <div>
+      <form (ngSubmit)="fetchAllUsers(showUser, 20, 0)">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Search User</mat-label>
+          <input matInput placeholder="Type first name" [(ngModel)]="showUser" [ngModelOptions]="{standalone: true}">
+          <button type="subtmi" matSuffix mat-icon-button aria-label="search">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+      <ul class="chatapp-user-card">
+        <ng-container *ngFor="let user of showUsers">
+          <li *ngIf="curUser.id != user.id">
+            <mat-card class="chatapp-card-container">
+              <button mat-button (click)="userSelected(user, drawer)">
+                {{user.firstName | titlecase}} {{user.lastName | titlecase}}
+              </button>
+            </mat-card>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </mat-drawer>
+  <mat-sidenav-container class="height-100">
+    <router-outlet class="padding-lr-2"></router-outlet>
+  </mat-sidenav-container>
+</mat-drawer-container>

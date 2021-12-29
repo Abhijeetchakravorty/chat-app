@@ -1,0 +1,33 @@
+<ng-container *ngIf="showLoadMessage">
+  <h1 class="text-align-center padding-top-5">
+    Welcome to Tokyo Chat App
+  </h1>
+</ng-container>
+
+<ng-container *ngIf="!showLoadMessage">
+  <div class="padding-lr-1 height-100 chatapp-card-container">
+    <mat-card class="height-100">
+      <mat-card-title class="chat-user-title"> {{chatUser.firstName | titlecase}} {{chatUser.lastName | titlecase}}
+      </mat-card-title>
+      <mat-card-content id="chatapp-content" class="chatapp-list-container" #scrollMe>
+        <ul id="chat-user-list" class="chatapp-chat-list" [innerHTML]="userChatStr">
+
+        </ul>
+      </mat-card-content>
+      <mat-card-actions class="chatapp-footer-text width-98">
+        <div>
+          <form (ngSubmit)="postMessage()">
+            <mat-form-field class="width-98" appearance="fill">
+              <mat-label>message</mat-label>
+              <input matInput placeholder="Start typing your message...." [(ngModel)]="chatText"
+                [ngModelOptions]="{standalone: true}">
+              <button type="submit" matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>send</mat-icon>
+              </button>
+            </mat-form-field>
+          </form>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</ng-container>
